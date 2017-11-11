@@ -17,10 +17,10 @@ public class StartController : MonoBehaviour
 
 {
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated horizontal x axis speed of the star
 	//the game object that is in the scene.
-	[SerializeField] private float _speed = 20f;
+	[SerializeField] private float speed = 20f;
 
 	/*[SerializeField] private float _startY;
 
@@ -92,7 +92,7 @@ public class StartController : MonoBehaviour
 		//game object in the scene. Then the minus sighn will move
 		//this gameobject to the left, with specific predifined x axis speed.
 		//This is applying movement only in x axis direction.
-		_currentPosition -= new Vector2 (_speed, 0);
+		_currentPosition -= new Vector2 (speed, 0);
 
 		//If the game object's x axis position is less than of 
 		//x axis point is: -422 then Reset function is applied

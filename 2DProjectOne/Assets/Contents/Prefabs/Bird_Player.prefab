@@ -254,11 +254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  leftX: -315
-  rightX: 317
-  topY: 238
-  bottomY: -256
-  _cloud: {fileID: 1566763665567044, guid: 9417d426250643b4f800b199eb3b82a0, type: 2}
+  leftX: -302
+  rightX: 304
+  topY: 229
+  bottomY: -248
+  cloud: {fileID: 1566763665567044, guid: 9417d426250643b4f800b199eb3b82a0, type: 2}
 --- !u!212 &212298847005791174
 SpriteRenderer:
   m_ObjectHideFlags: 1

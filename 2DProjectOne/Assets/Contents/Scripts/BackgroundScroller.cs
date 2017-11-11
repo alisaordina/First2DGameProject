@@ -21,23 +21,23 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour 
 {
-	//Declaire private variables that would be accessible to Unity Inspector.
+	//Declaire public variables that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated scrolling speed of the 
 	//background game object that is in the scene.
-	[SerializeField] private float _speedScroller;
+	[SerializeField] private float speedScroller;
 
-	//Declaire private variables that would be accessible to Unity Inspector.
+	//Declaire public variables that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated x axis starting point.
 	//This is the starting x point where the background would start to move from.
 	//This is were the background would reset itself, this is one of x axis boundary.
-	[SerializeField] private float _startingPointX;
+	[SerializeField] private float startingPointX;
 
-	//Declaire private variables that would be accessible to Unity Inspector.
+	//Declaire public variables that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated x axis ending point.
 	//This is the background end x point and it is also a boundary 
 	//point,this is where the background would 
 	//apply reset function and start from the x starting point.
-	[SerializeField] private float _endingPointX;
+	[SerializeField] private float endingPointX;
 
 	//This variable is from Unity the transform component 
 	//The Transform is defined in Unity as position, rotation and scale
@@ -90,11 +90,11 @@ public class BackgroundScroller : MonoBehaviour
 		//game object in the scene. Then the minus sighn will move
 		//this gameobject to the left, with the specific predifined x axis speed.
 		//This is applying movement only in x axis direction.
-		_currentPosition -= new Vector2 (_speedScroller, 0);
+		_currentPosition -= new Vector2 (speedScroller, 0);
 
 		//Here where the position of this game object gets to reset when the
 		//ending x axis poing is reached.
-		if(_currentPosition.x < _endingPointX)
+		if(_currentPosition.x < endingPointX)
 		{
 			//When this condition is true and game object has reached its x axis ending point
 			//The reset function is invoked. This will reset this game
@@ -114,7 +114,7 @@ public class BackgroundScroller : MonoBehaviour
 	{
 		//This is reseting the game object to its initial position.
 		//Resetting this game object's position to the strating x axis point.
-		_currentPosition = new Vector2 (_startingPointX, 0);
+		_currentPosition = new Vector2 (startingPointX, 0);
 	}
 
 }

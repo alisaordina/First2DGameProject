@@ -45,10 +45,21 @@ public class Player
 			return _instance;
 		}
 	}
+	//setting up a static contant variable that stored in kay and cannot be changed;
+	private const string key = "HIGH_SCORE";
 
 	//Player default contructor
 	private Player()
 	{
+		//Simply comparing/checking the static contant value that set in variable called key.
+		if (PlayerPrefs.HasKey (key)) 
+		{
+			//Then stored this value in PlayerPrefs and store that value in the high 
+			//score variable. Basically, the Player prefs is used to store like a persitant
+			//value. This means when the game is reset/started to execute all over again that
+			//value is still saved as a high score value and not get to reset back to zero.
+			_highScore = PlayerPrefs.GetInt (key);
+		}
 	}
 
 	//The HUDController class is added
@@ -64,6 +75,9 @@ public class Player
 	//setting up the life variable
 	private int _life;
 
+	//setting up the high score variable
+	private int _highScore = 0;
+
 	//Player's public property
 	//Using the get (read) and set property
 	//to update the score variable
@@ -78,12 +92,43 @@ public class Player
 		set
 		{
 			_score = value;
+			//update high score points as well
+			HighScore = _score;
 
 			//scoreLabel.text = "Score: " + _score;
 			//This will call the HUDController's
 			//method called update UI in order to update 
 			//the score label
 			gameCtl.updateUI();
+		}
+	}
+
+	//Player's public property
+	//Using the get (read) and set property
+	//to update the high score variable
+	public int HighScore
+	{
+		//reading the high score
+		get 
+		{
+			return _highScore;
+		}
+		//setting the high score to the new value
+		set
+		{
+			//only set of the current value
+			//is greater than the current score
+			if (value > _highScore)
+			{
+				_highScore = value;
+				PlayerPrefs.SetInt (key, _highScore);
+			}
+
+			//highScoreLabel.text = "High Score: " + _highscore;
+			//This will call the HUDController's
+			//method called update UI in order to update 
+			//the high score label
+			//gameCtl.updateUI();
 		}
 	}
 
@@ -121,4 +166,6 @@ public class Player
 			}
 		}
 	}
+
+
 }

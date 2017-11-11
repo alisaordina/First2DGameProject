@@ -15,34 +15,34 @@ using UnityEngine;
 public class BirdController : MonoBehaviour 
 
 {
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated speed of the Bird_Player 
 	//game object that is in the scene.
-	[SerializeField] private float _speed = 3f;
+	[SerializeField] private float speed = 3f;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated x axis left boundary point.
 	//This is the left x axis point boundary where the Bird_Player cannot cross over
 	//in order to stay within the camera's view.
-	[SerializeField] private float _leftX;
+	[SerializeField] private float leftX;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated x axis right boundary point.
 	//This is the right x axis point boundary where the Bird_Player cannot cross over
 	//in order to stay within the camera's view.
-	[SerializeField] private float _rightX;
+	[SerializeField] private float rightX;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated y axis top boundary point.
 	//This is the top y axis point boundary where the Bird_Player cannot cross over
 	//in order to stay within the camera's view.
-	[SerializeField] private float _topY;
+	[SerializeField] private float topY;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated y axis bottom boundary point.
 	//This is the bottom y axis point boundary where the Bird_Player cannot cross over
 	//in order to stay within the camera's view.
-	[SerializeField] private float _bottomY;
+	[SerializeField] private float bottomY;
 
 	//[SerializeField] GameObject redExplosion;
 
@@ -128,7 +128,7 @@ public class BirdController : MonoBehaviour
 			//this game object to the left, with specific predifined speed.
 			//This is applying movement only in x axis direction.
 
-			_currentPosition -= new Vector2 (_speed, 0);
+			_currentPosition -= new Vector2 (speed, 0);
 		}
 
 		if(Input.GetKey(KeyCode.D))
@@ -142,7 +142,7 @@ public class BirdController : MonoBehaviour
 			//this game object to the right, with specific predifined speed.
 			//This is applying movement only in x axis direction.
 
-			_currentPosition += new Vector2 (_speed, 0);
+			_currentPosition += new Vector2 (speed, 0);
 		}
 
 		if(Input.GetKey(KeyCode.W))
@@ -156,7 +156,7 @@ public class BirdController : MonoBehaviour
 			//this game object up, with specific predifined speed.
 			//This is applying movement only in y axis direction.
 
-			_currentPosition += new Vector2 (0, _speed);
+			_currentPosition += new Vector2 (0, speed);
 		}
 
 		if(Input.GetKey(KeyCode.S))
@@ -170,7 +170,7 @@ public class BirdController : MonoBehaviour
 			//this game object down, with specific predifined speed.
 			//This is applying movement only in y axis direction.
 
-			_currentPosition -= new Vector2 (0, _speed);
+			_currentPosition -= new Vector2 (0, speed);
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space))
@@ -216,49 +216,49 @@ public class BirdController : MonoBehaviour
 		//Checking if the Bird_Player is within its less than left x axis point
 		//It is checking if the Bird_Player is less than the left x axis point of the screen.
 
-		if (_currentPosition.x < _leftX) 
+		if (_currentPosition.x < leftX) 
 		{
 			//If its at that the left x axis point apply left axis point,
 			//let game object to stay within its left x axis point.
 			//If true, moves the player back on screen || resets the Bird_Player to the left most position.
 
-			_currentPosition.x = _leftX;
+			_currentPosition.x = leftX;
 		}
 
 		//Checking if the Bird_Player is within its greater than right x axis point.
 		//It is checking if the Bird_Player is greater than the right x axis point of the screen.
 
-		if (_currentPosition.x > _rightX) 
+		if (_currentPosition.x > rightX) 
 		{
 			//If its at that the right x axis point apply right axis point,
 			//let game object to stay within its right x axis point.
 			//If true, moves the player back on screen || resets the Bird_Player to the right most position.
 
-			_currentPosition.x = _rightX;
+			_currentPosition.x = rightX;
 		}
 
 		//Checking if the Bird_Player is within its greater than top y axis point.
 		//It is checking if the Bird_Player is greater than the top y axis point of the screen.
 
-		if (_currentPosition.y > _topY) 
+		if (_currentPosition.y > topY) 
 		{
 			//If its at that the top y axis point apply top y axis point,
 			//let game object to stay within its top y axis point.
 			//If true, moves the player back on screen || resets the Bird_Player to the top y most position.
 
-			_currentPosition.y = _topY;
+			_currentPosition.y = topY;
 		}
 
 		//Checking if the Bird_Player is within its less than bottom y axis point.
 		//It is checking if the Bird_Player is less than the bottom y axis point of the screen.
 
-		if (_currentPosition.y < _bottomY) 
+		if (_currentPosition.y < bottomY) 
 		{
 			//If its at that the bottom y axis point apply bottom y axis point,
 			//let game object to stay within its bottom y axis point.
 			//If true, moves the player back on screen || resets the Bird_Player to the bottom y most position.
 
-			_currentPosition.y = _bottomY;
+			_currentPosition.y = bottomY;
 		}
 
 	}

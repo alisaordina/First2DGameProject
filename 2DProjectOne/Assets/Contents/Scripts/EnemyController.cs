@@ -19,40 +19,40 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour 
 {
 	
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated minimum horizontal x axis speed of the enemy
 	//game object that is in the scene.
-	[SerializeField] private float _minSpeedX = 5f;
+	[SerializeField] private float minSpeedX = 5f;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated maximum horizontal x axis speed of the enemy
 	//game object that is in the scene.
-	[SerializeField] private float _maxSpeedX = 25f;
+	[SerializeField] private float maxSpeedX = 25f;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated minimum vertical y axis speed of the enemy
 	//game object that is in the scene.
 	[SerializeField] private float _minSpeedY = -2f;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated maximum vertical y axis speed of the enemy
 	//game object that is in the scene.
-	[SerializeField] private float _maxSpeedY = 15f;
+	[SerializeField] private float maxSpeedY = 15f;
 
-	//Declaire private variables that would be accessible to Unity Inspector.
+	//Declaire public variables that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated y axis start point
 	//which is one of the boundary points.
 	//This is the start y axis point that is a top 
 	//boundary point, where the enemy starts entering the camera view 
 	//and stay within the camera's view scene.
-	[SerializeField] private float _startY = 233;
+	[SerializeField] private float startY = 233;
 
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated end y axis point
 	//which is the bottom boundary point.
 	//This is the end y axis point, which is a bottom boundary
 	//where the enemy ends and resets.
-	[SerializeField] private float _endY = -235;
+	[SerializeField] private float endY = -235;
 
 	//Declaire private variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated x axis start point
@@ -179,17 +179,17 @@ public class EnemyController : MonoBehaviour
 		//Setting up a random speed number withim the boundaries of maximum and
 		//its minimum speed number of the enemy's speed in x axis direction.
 		
-		float xSpeed = Random.Range (_minSpeedX, _maxSpeedX);
+		float xSpeed = Random.Range (minSpeedX, maxSpeedX);
 
 		//Setting up a random speed number withim the boundaries of maximum and
 		//its minimum speed number of the enemy's speed in y axis direction.
-		float ySpeed = Random.Range (_minSpeedY, _maxSpeedY);
+		float ySpeed = Random.Range (_minSpeedY, maxSpeedY);
 
 		//applying the random x speed and random y speed into this enemy game oject
 		_currentSpeed = new Vector2 (xSpeed, ySpeed);
 
 		//Setting up a random y axis point within the y axis boundary of the camers's view
-		float yAxis = Random.Range (_startY, _endY);
+		float yAxis = Random.Range (startY, endY);
 
 		//Apply the current position
 		//which is the _trasform.position of the enemy
@@ -222,16 +222,26 @@ public class EnemyController : MonoBehaviour
 		//When the game object's tag is equal to cloud
 		if (other.gameObject.tag.Equals ("cloud")) 
 		{
+
+			//setting up the audio sourse of the cloud's game component.
+			AudioSource cloudAudioS = other.gameObject.GetComponent<AudioSource>();
+
 			//If it is true and the intecepted game object's tag is equal to 
 			//cloud then access the cloud game object's component 
 			//which is Audio Source. If the cloud's Audio Source is assigned and not
 			//eaquals to null, then this function gets invoked with its statement.
-			if (other.gameObject.GetComponent<AudioSource>()!= null) 
+			if (cloudAudioS!= null) 
+			{
+				//If the cloud's Audio Source is set up and not null then 
+				//play its attached audio clip.
+				cloudAudioS.Play();
+			}
+			/*if (other.gameObject.GetComponent<AudioSource>()!= null) 
 			{
 				//If the cloud's Audio Source is set up and not null then 
 				//play its attached audio clip.
 				other.gameObject.GetComponent<AudioSource>().Play ();
-			}
+			}*/
 
 			//If the intercepted game object does equal to cloud then
 			//instantiate, create a blue explosion game object on to the scene

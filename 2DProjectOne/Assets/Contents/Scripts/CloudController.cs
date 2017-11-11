@@ -15,9 +15,9 @@ using UnityEngine;
 
 public class CloudController : MonoBehaviour 
 {
-	//Declaire private variable that would be accessible to Unity Inspector.
+	//Declaire public variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated horizontal x axis speed of the cloud object.
-	[SerializeField] private float _speed = 20f;
+	[SerializeField] private float speed = 20f;
 
 	//Declaire variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated game object that is called enemy
@@ -35,7 +35,7 @@ public class CloudController : MonoBehaviour
 
 	//Declaire private variable
 	//This variable is assigned to a designated Audio Source variable
-	private AudioSource _hit;
+	//private AudioSource _hit;
 
 
 	// Use this for initialization
@@ -49,7 +49,7 @@ public class CloudController : MonoBehaviour
 		//access the Audio Source.
 		//This is set up so the specific methods could be applied to control 
 		//this game object's Audio Source and invoke Play method when appropriate.
-		_hit = gameObject.GetComponent<AudioSource> ();
+		//_hit = gameObject.GetComponent<AudioSource> ();
 
 		//Here the set up of the Tranform. 
 		//The Transform is accessed from this specific game object
@@ -90,7 +90,7 @@ public class CloudController : MonoBehaviour
 		//game object in the scene. The the plus sighn will move
 		//this game object to the right, with specific predifined x axis speed.
 		//This is applying movement only in x axis direction.
-		_currentPosition += new Vector2 (_speed, 0);
+		_currentPosition += new Vector2 (speed, 0);
 
 		//Check if this game object has reached its x axis boundary
 		//point. If it has the CheckBounds() function gets called.

@@ -32,7 +32,11 @@ public class HUDController : MonoBehaviour
 	//This variable is assigned to a designated game object that is called enemy.
 	[SerializeField] GameObject enemy; 
 
+	//Declaire variable that would be accessible to Unity Inspector.
+	//This variable is assigned to a designated game object that is called player.
 	//[SerializeField] GameObject bird;
+	//[SerializeField] GameObject player; 
+
 
 	//Declaire variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated lifeLabel game object of the Canvas UI.
@@ -47,8 +51,16 @@ public class HUDController : MonoBehaviour
 	[SerializeField] Text gameOverLabel;
 
 	//Declaire variable that would be accessible to Unity Inspector.
+	//This variable is assigned to a designated highScoreLabel game object of the Canvas UI.
+	[SerializeField] Text highScoreLabel;
+
+	//Declaire variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated resetBtn game object of the Canvas UI.
 	[SerializeField] Button resetBtn;
+
+	//Declaire private variable
+	//This variable is assigned to a designated AudioSource variable
+	//private AudioSource _gameOverSound;
 
 	/*private int _score = 0;
 
@@ -109,6 +121,9 @@ public class HUDController : MonoBehaviour
 		//First setting up the life label to a value of 3.
 		Player.Instance.Life = 3;
 
+		//First setting up the high score label to a value of 0.
+		Player.Instance.HighScore = 0;
+
 		//Setting life label in Heads Up Display
 		//in UI in active mode
 		//An active means that this life label game object 
@@ -121,11 +136,23 @@ public class HUDController : MonoBehaviour
 		//is enabled and is appeared in the scene
 		scoreLabel.gameObject.SetActive (true);
 
+		//Setting the bird player game object 
+		//in an active mode
+		//An active means that this bird player game object 
+		//is enabled and is appeared in the scene.
+		//player.SetActive (true);
+
 		//Setting Game Over label in Heads Up Display
 		//in UI in non-active mode
 		//A non-active means that this GameOver label game object 
 		//is disabled and it is not appeared in the scene
 		gameOverLabel.gameObject.SetActive (false);
+
+		//Setting high score label in Heads Up Display
+		//in UI in non-active mode
+		//A non-active means that this high score label game object 
+		//is disabled and it is not appeared in the scene
+		highScoreLabel.gameObject.SetActive (false);
 
 		//Setting up the button in Heads Up Display
 		//in UI in non-active mode.
@@ -144,6 +171,11 @@ public class HUDController : MonoBehaviour
 
 	public void gameOver()
 	{
+
+		//if(_gameOverSound !=null)
+		//{
+			//_gameOverSound.Play ();
+		//}
 		//Setting life label in Heads Up Display
 		//in UI in Non-active mode
 		//Non-active means that this life label game object 
@@ -156,11 +188,26 @@ public class HUDController : MonoBehaviour
 		//is disabled and it is not appeared in the scene
 		scoreLabel.gameObject.SetActive (false);
 
+		//diactivate the bird player on the scene
+		//player.SetActive (false);
+
 		//Setting game over label in Heads Up Display
 		//in UI in active mode
 		//An active means that this Game Over label game object 
 		//is enabled and is appeared in the scene.
 		gameOverLabel.gameObject.SetActive (true);
+
+		//Setting high score label in Heads Up Display
+		//in UI in active mode
+		//An active means that this high score label game object 
+		//is enabled and is appeared in the scene.
+		highScoreLabel.gameObject.SetActive (true);
+
+		//Update the high score label with its highest score's counter variable from 
+		//the Player's public property which is high score counter
+		//that keeps track of the Bird_player's high score counter.
+		highScoreLabel.text = "Highest Score: " +Player.Instance.HighScore;
+			//+ "\nYour Score: " +Player.Instance.Score; 
 
 		//Setting reset button in Heads Up Display
 		//in UI in active mode
@@ -187,6 +234,7 @@ public class HUDController : MonoBehaviour
 		//the Player's public property which is life counter
 		//that keeps track of the Bird_player's life counter.
 		lifeLabel.text = "Life: " + Player.Instance.Life; 
+
 	}
 	// Use this for initialization
 	void Start () 
@@ -203,6 +251,15 @@ public class HUDController : MonoBehaviour
 		//HUDController to communicate the score and life variable.
 		//So, here the Player class is introduced to the HUDController class.
 		Player.Instance.gameCtl = this;
+
+		//Here the set up of the Audio Source. 
+		//This Audio Source Component is accessed from this specific game object
+		//which the script is attached to Canvas game object in the scene.
+		//Basically, from this game object the Get Component is invoked which allows to 
+		//access the Audio Source.
+		//This is set up, so the specific methods could be applied to control 
+		//this game object's Audio Source and invoke Play method when appropriate.
+	//	_gameOverSound = gameObject.GetComponent<AudioSource> ();
 
 		//The initialize function is called to display the appropriate 
 		//UI labels in Heads Up Display in the scene.
