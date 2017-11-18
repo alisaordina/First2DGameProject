@@ -35,7 +35,7 @@ public class HUDController : MonoBehaviour
 	//Declaire variable that would be accessible to Unity Inspector.
 	//This variable is assigned to a designated game object that is called player.
 	//[SerializeField] GameObject bird;
-	//[SerializeField] GameObject player; 
+	[SerializeField] GameObject bird; 
 
 
 	//Declaire variable that would be accessible to Unity Inspector.
@@ -113,7 +113,11 @@ public class HUDController : MonoBehaviour
 	//appear in the scene and not interact with any thing in the scene.
 	private void initialize()
 	{
-		//_bird.gameObject.SetActive (true);
+
+		//Creates, clones the enemy game object onto the
+		//scene
+
+		bird.gameObject.SetActive (true);
 
 		//First setting up the score label to 0 value.
 		Player.Instance.Score = 0;
@@ -189,7 +193,8 @@ public class HUDController : MonoBehaviour
 		scoreLabel.gameObject.SetActive (false);
 
 		//diactivate the bird player on the scene
-		//player.SetActive (false);
+
+		bird.gameObject.SetActive (false);
 
 		//Setting game over label in Heads Up Display
 		//in UI in active mode
@@ -206,8 +211,7 @@ public class HUDController : MonoBehaviour
 		//Update the high score label with its highest score's counter variable from 
 		//the Player's public property which is high score counter
 		//that keeps track of the Bird_player's high score counter.
-		highScoreLabel.text = "Highest Score: " +Player.Instance.HighScore;
-			//+ "\nYour Score: " +Player.Instance.Score; 
+		highScoreLabel.text = "Highest Score: " +Player.Instance.HighScore + "\nYour Score: " +Player.Instance.Score; 
 
 		//Setting reset button in Heads Up Display
 		//in UI in active mode

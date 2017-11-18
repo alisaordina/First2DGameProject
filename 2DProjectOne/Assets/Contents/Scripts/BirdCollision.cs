@@ -93,6 +93,8 @@ public class BirdCollision : MonoBehaviour
 			//by 100 points.
 			Player.Instance.Score += 100;
 
+			other.gameObject.GetComponent<StartController> ().Reset ();
+
 		}
 
 		//If the collision happends, the interception with another game object's 
@@ -108,6 +110,8 @@ public class BirdCollision : MonoBehaviour
 			//has happened with the enemy.
 			Debug.Log ("Collision With The Enemy\n");
 
+			AudioSource hit = other.gameObject.GetComponent<AudioSource>();
+
 
 			//If the intercepted game object does equal to enemy then
 			//intansiate, create a red explosion game object on to the scene
@@ -115,6 +119,11 @@ public class BirdCollision : MonoBehaviour
 			//The enemy object's position is accessed through its Transform component which 
 			//gets the enemy object's position, its coordinates.
 			Instantiate (explosion).GetComponent<Transform> ().position = other.gameObject.GetComponent<Transform> ().position;
+
+			if (hit != null) 
+			{
+				hit.Play ();
+			}
 
 			//Because the collision (intercept) has happenned with the enemy
 			//game object. Then the enemy game object is reset
