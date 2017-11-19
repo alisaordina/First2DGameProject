@@ -152,7 +152,7 @@ public class BirdCollision : MonoBehaviour
 			//game object blink with its apprence.
 			//Calling simply by startCoroutine(function name)
 			//by its name simply calls the couritine function.
-			StartCoroutine("Blink");
+			//StartCoroutine("Blink");
 		}
 	}
 
