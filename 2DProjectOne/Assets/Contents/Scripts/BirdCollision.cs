@@ -145,6 +145,9 @@ public class BirdCollision : MonoBehaviour
 			//by one point.
 			Player.Instance.Life--;
 
+			if(this.gameObject.activeSelf)
+			{
+
 			//Since the Bird_Player 
 			//has intercepted with the enemy game object 
 			//the coroutine function Blink() would be called.
@@ -152,7 +155,8 @@ public class BirdCollision : MonoBehaviour
 			//game object blink with its apprence.
 			//Calling simply by startCoroutine(function name)
 			//by its name simply calls the couritine function.
-			//StartCoroutine("Blink");
+			StartCoroutine("Blink");
+			}
 		}
 	}
 
